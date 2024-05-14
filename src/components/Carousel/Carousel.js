@@ -1,12 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import './Carousel.css'; // Importa tu archivo CSS con los estilos personalizados
 
 const Carousel = ({ movies }) => {
   const [startIndex, setStartIndex] = useState(0);
-  const itemsPerPage = 4;
-  const containerRef = useRef(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStartX, setDragStartX] = useState(0);
+  const itemsPerPage = 4; // Número de películas a mostrar por página
 
   const handlePrev = () => {
     setStartIndex(prevIndex => Math.max(0, prevIndex - itemsPerPage));
@@ -16,44 +13,21 @@ const Carousel = ({ movies }) => {
     setStartIndex(prevIndex => Math.min(movies.length - itemsPerPage, prevIndex + itemsPerPage));
   };
 
-  const handleDragStart = (e) => {
-    setIsDragging(true);
-    setDragStartX(e.clientX || e.touches[0].clientX);
-  };
-
-  const handleDragMove = (e) => {
-    if (isDragging) {
-      const currentX = e.clientX || e.touches[0].clientX;
-      const deltaX = currentX - dragStartX;
-      containerRef.current.scrollLeft -= deltaX;
-      setDragStartX(currentX);
-    }
-  };
-
-  const handleDragEnd = () => {
-    setIsDragging(false);
-  };
-  console.log(startIndex);
-
   return (
-    <div
-      ref={containerRef}
-      className="carousel"
-      onMouseDown={handleDragStart}
-      onMouseMove={handleDragMove}
-      onMouseUp={handleDragEnd}
-      onTouchStart={handleDragStart}
-      onTouchMove={handleDragMove}
-      onTouchEnd={handleDragEnd}
-    >
-      {movies.map((movie, index) => (
-        <div key={movie.id} className="carousel__item">
-          <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} className="w-full h-auto rounded-lg shadow-md" />
-          <h3 className="mt-2 text-lg font-semibold">{movie.title}</h3>
-        </div>
-      ))}
-      <button onClick={handlePrev} className="carousel__button carousel__button--prev">Prev</button>
-      <button onClick={handleNext} className="carousel__button carousel__button--next">Next</button>
+    <div className="max-w-5xl mx-auto my-8 overflow-hidden custom-scrollbar">
+      <div className="flex justify-between items-center mb-4">
+        <button onClick={handlePrev} className="px-4 py-2 bg-gray-200 rounded-full text-gray-800 focus:outline-none">Prev</button>
+        <h2 className="text-xl font-semibold">Featured Movies</h2>
+        <button onClick={handleNext} className="px-4 py-2 bg-gray-200 rounded-full text-gray-800 focus:outline-none">Next</button>
+      </div>
+      <div className="flex space-x-4 overflow-x-auto transition-transform duration-300 ease-in-out transform translate-x-[calc(-100%*{startIndex/4})]">
+        {movies.slice(startIndex, startIndex + itemsPerPage).map((movie) => (
+          <div key={movie.id} className={`flex-none w-64 bg-gray-300 rounded-lg p-4`}>
+            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} className="w-full h-auto rounded-lg shadow-md" />
+            <h3 className="mt-2 text-lg font-semibold">{movie.title}</h3>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
