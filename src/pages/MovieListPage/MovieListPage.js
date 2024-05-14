@@ -1,32 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import MovieCard from '../../components/MovieCard/MovieCard';
-import { fetchMovies, fetchGenres } from '../../services/moviesServices';
+import { fetchMovies } from '../../services/moviesServices';
+import Carousel from '../../components/Carousel/Carousel';
 
 function MovieListPage() {
-
   const [movies, setMovies] = useState([]);
-  const [genres, setGenres] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      // Obtener lista de películas
       const moviesData = await fetchMovies();
       setMovies(moviesData);
-      // Verificar si ya se han cargado los géneros
-      if (genres.length === 0) {
-        const genresData = await fetchGenres();
-        setGenres(genresData);
-      }
     };
-    fetchData();
-  }, [genres]);
+
+    fetchData(); // Llama a la función fetchData para obtener las películas al montar el componente
+  }, []);
 
   return (
-    <div className="m-12">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {movies.map(movie => (
-          <MovieCard key={movie.id} movie={movie} genres={genres}/>
-        ))}
+    <div className='mx-[10%] my-[40px]'>
+      <div>
+        <h1 className='font-bold mt-4 text-3xl font-boldmy-[40px]'>Trending Movies</h1>
+        <Carousel movies={movies} />
+        <h1 className='font-bold mt-4 text-3xl font-bold my-[40px]'>Top Rated Movies</h1>
+        <Carousel movies={movies} />
       </div>
     </div>
   )

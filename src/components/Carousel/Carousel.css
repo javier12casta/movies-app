@@ -1,0 +1,51 @@
+/* Estilos personalizados para el scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #eee4e4;
+    border-radius: 5px;
+}
+
+/* Handle al pasar el cursor */
+::-webkit-scrollbar-thumb:hover {
+    background: #ccc9c9;
+}
+/* Estilos para el contenedor del carrusel */
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+  }
+  
+  /* Estilos para cada card dentro del carrusel */
+  .carousel__item {
+    flex: 0 0 auto;
+    width: 250px; /* Ancho fijo para cada card */
+    margin-right: 16px; /* Espacio entre las cards */
+    scroll-snap-align: start;
+  }
+  
+  /* Estilos para los botones de navegación */
+  .carousel__button {
+    padding: 8px 16px;
+    background-color: #ccc;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .carousel__button--prev {
+    margin-right: 8px;
+  }
+  
+  .carousel__button--next {
+    margin-left: 8px;
+  }
