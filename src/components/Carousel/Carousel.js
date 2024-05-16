@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import './Carousel.css'; // Importa tu archivo CSS con los estilos personalizados
+import './Carousel.css';
 
 const Carousel = ({ movies }) => {
   const [startIndex, setStartIndex] = useState(0);
-  const itemsPerPage = 4; // Número de películas a mostrar por página
+  const itemsPerPage = 6;
 
   const handlePrev = () => {
     setStartIndex(prevIndex => Math.max(0, prevIndex - itemsPerPage));
@@ -15,7 +15,7 @@ const Carousel = ({ movies }) => {
 
   return (
     <div className="max-w-5xl mx-auto my-8 overflow-hidden custom-scrollbar">
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-8">
         <button onClick={handlePrev} className="px-4 py-2 bg-gray-200 rounded-full text-gray-800 focus:outline-none">Prev</button>
         <h2 className="text-xl font-semibold">Featured Movies</h2>
         <button onClick={handleNext} className="px-4 py-2 bg-gray-200 rounded-full text-gray-800 focus:outline-none">Next</button>
