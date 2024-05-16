@@ -26,13 +26,12 @@ const RentalModal = ({ movie, closeModal, confirmRent }) => {
                     <Image image={`${process.env.REACT_APP_BASE_URL_IMG}${movie.poster_path}`} />
                 </div>
                 <div className="mb-4">
-                    <p className="text-lg">Title: {movie.title}</p>
-                    <p className="text-lg">Director: {movie.director}</p>
-                    <p className="text-lg">Year: {movie.release_date}</p>
-                    <p className="text-lg">Duration: {movie.duration} min</p>
+                    <p className="text-lg">Título: {movie.title}</p>
+                    <p className="text-lg">Fecha de publicación: {movie.release_date}</p>
+                    <p className="text-lg">Duración: {movie.duration} min</p>
                 </div>
                 <label className="block mb-4">
-                    Rent Duration (days):
+                    Duración de la renta (días):
                     <input
                         type="number"
                         value={rentalDuration}
@@ -45,13 +44,13 @@ const RentalModal = ({ movie, closeModal, confirmRent }) => {
                     onClick={handleConfirm}
                     className="bg-green-500 text-white py-2 px-4 rounded mr-2"
                 >
-                    Confirm Rent
+                    Rentar
                 </button>
                 <button
                     onClick={closeModal}
                     className="bg-red-500 text-white py-2 px-4 rounded"
                 >
-                    Cancel
+                    Cancelar
                 </button>
             </div>
         </div>

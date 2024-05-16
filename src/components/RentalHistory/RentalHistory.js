@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRentalContext } from '../../hooks/RentalContext';
+import { FaTrash } from "react-icons/fa";
 
 const RentalHistory = () => {
     const { rentedMovies, removeRentedMovie } = useRentalContext();
@@ -18,7 +19,7 @@ const RentalHistory = () => {
                                 onClick={() => removeRentedMovie(rental.id)} 
                                 className="mt-2 p-2 bg-red-500 text-white rounded"
                             >
-                                Remove
+                                <FaTrash />
                             </button>
                         </li>
                     ))}

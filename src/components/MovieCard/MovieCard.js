@@ -32,7 +32,7 @@ function MovieCard({ movie, genres, onRent }) {
                 </div>
                 </Link>
                 <button onClick={() => onRent(movie)} className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" >
-                    Rentar pelicula
+                    Rentar
                 </button>
             </div>
     );

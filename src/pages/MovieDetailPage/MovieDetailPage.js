@@ -64,7 +64,7 @@ function MovieDetailPage() {
                   onClick={handleRentClick}
                   className="mt-4 p-2 bg-blue-500 text-white rounded"
                 >
-                  Rent Movie
+                  Rentar
                 </button>
               </div>
             </div>
@@ -82,7 +82,7 @@ function MovieDetailPage() {
           )}
         </div>
       ) : (
-        <p>Loading movie details...</p>
+        <p>Cargando detalle de la pelicula...</p>
       )}
     </div>
   );
