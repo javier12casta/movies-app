@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import PlayerComponent from '../../components/PlayerComponent/PlayerComponent';
 import { useParams } from 'react-router-dom';
-import { fetchMovieDetails } from '../../services/moviesServices';
+import { fetchMovieDetails, getCastService } from '../../services/moviesServices';
 import Image from '../../components/ImageDetail/ImageDetail';
 import RentalModal from '../../components/RentalModal/RentalModal';
+import CastCarousel from '../../components/CastCarousel/CastCarousel';
 
 function MovieDetailPage() {
   const videoId = 'rmoneJ_797s?si=u2dTegCcFuGuzxcr';
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [castData, setCast] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,8 +23,21 @@ function MovieDetailPage() {
         setMovieDetails(null);
       }
     };
+    const fetchCast = async () => {
+      try {
+        // Obtener el elenco de la película
+        const castData = await getCastService(id);
+        setCast(castData.cast);
+      } catch (error) {
+        console.error('Error fetching cast:', error);
+      }
+    };
+
     fetchData();
+    fetchCast();
   }, [id]);
+
+
 
   const handleRentClick = () => {
     setIsModalOpen(true);
@@ -68,6 +83,10 @@ function MovieDetailPage() {
                 </button>
               </div>
             </div>
+            <div className='mt-[15%] mb-[60px] mx-8'>
+              <CastCarousel castData={castData}/>
+            </div>
+
             <div className='mt-[15%] mb-[60px] mx-8'>
               <h2 className="font-bold mt-4 text-3xl font-bold my-12">Trailer</h2>
               <PlayerComponent videoId={videoId} />

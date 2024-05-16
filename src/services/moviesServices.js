@@ -30,7 +30,7 @@ export const fetchMovieDetails = async (movieId) => {
 
 export const fetchGenres = async () => {
     try {
-        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}genre/movie/list`, {
+        const response = await tmdbApi.get(`genre/movie/list`, {
             params: {
                 api_key: API_KEY
             }
@@ -38,6 +38,16 @@ export const fetchGenres = async () => {
         return response.data.genres;
     } catch (error) {
         console.error('Error fetching genres:', error);
+        return [];
+    }
+};
+
+export const getCastService = async (id) => {
+    try {
+        const response = await tmdbApi.get(`movie/${id}/credits?language=en-US`);
+        return response.data;
+    } catch (error) {
+        console.error('Error al obtener el Cast', error);
         return [];
     }
 };
