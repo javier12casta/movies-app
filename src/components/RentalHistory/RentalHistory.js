@@ -12,9 +12,8 @@ const RentalHistory = () => {
                     {rentedMovies.map((rental) => (
                         <li key={rental.id} className="p-4 bg-white shadow rounded-md">
                             <h3 className="text-xl font-semibold">{rental.title}</h3>
-                            <p><strong>Director:</strong> {rental.director}</p>
-                            <p><strong>Duration:</strong> {rental.rentalDuration} days</p>
-                            <p><strong>Date Rented:</strong> {rental.rentalDate}</p>
+                            <p><strong>Días de renta:</strong> {rental.rentalDuration} days</p>
+                            <p><strong>Fecha de renta:</strong> {rental.rentalDate}</p>
                             <button 
                                 onClick={() => removeRentedMovie(rental.id)} 
                                 className="mt-2 p-2 bg-red-500 text-white rounded"

@@ -5,11 +5,9 @@ import { Link } from 'react-router-dom';
 function NavBar() {
     const [nav, setNav] = useState(false);
 
-    // Toggle function to handle the navbar's display
     const handleNav = () => {
         setNav(!nav);
     };
-    // Array containing navigation items
     const navItems = [
         { id: 1, text: 'Inicio', path: '/'},
         { id: 2, text: 'Catalogo', path: '/catalogo' },
@@ -18,8 +16,6 @@ function NavBar() {
 
     return (
         <>
-            {/* Desktop Navigation */}
-
             <ul ul className='hidden md:flex' >
                 {
                     navItems.map(item => (
@@ -35,13 +31,12 @@ function NavBar() {
                 }
             </ul>
 
-            {/* Mobile Navigation Icon */}
             < div onClick={handleNav} className='block md:hidden' >
                 {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />
                 }
             </div >
 
-            {/* Mobile Navigation Menu */}
+
             < ul
                 className={
                     nav
@@ -49,18 +44,18 @@ function NavBar() {
                         : 'ease-in-out w-[60%] duration-500 fixed top-0 bottom-0 left-[-100%]'
                 }
             >
-                {/* Mobile Logo */}
-                < h1 className='w-full text-3xl font-bold text-[#00df9a] m-4' > REACT.</h1 >
+                < h1 className='w-full text-3xl font-bold text-[#00df9a] m-4' > Cinema</h1 >
 
-                {/* Mobile Navigation Items */}
                 {
                     navItems.map(item => (
+                        <Link to={item.path}>
                         <li
                             key={item.id}
                             className='p-4 border-b rounded-xl hover:bg-[#00df9a] duration-300 hover:text-black cursor-pointer border-gray-600'
                         >
                             {item.text}
                         </li>
+                        </Link>
                     ))
                 }
             </ul >

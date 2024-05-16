@@ -1,5 +1,4 @@
 import React from 'react';
-import './Header.css';
 import NavBar from '../NavBar/NavBar';
 import cinemaLogo from '../../assets/cinema_logo.svg';
 import { Link } from 'react-router-dom';
