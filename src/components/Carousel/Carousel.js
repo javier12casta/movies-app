@@ -23,11 +23,11 @@ const Carousel = ({ movies }) => {
       </div>
       <div className="flex space-x-4 overflow-x-auto transition-transform duration-300 ease-in-out transform translate-x-[calc(-100%*{startIndex/4})]">
         {movies.slice(startIndex, startIndex + itemsPerPage).map((movie) => (
-          <Link to={`/pelicula/${movie.id}`}>
-          <div key={movie.id} className={`flex-none w-64 bg-gray-300 rounded-lg p-4`}>
-            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} className="w-full h-auto rounded-lg shadow-md" />
-            <h3 className="mt-2 text-lg font-semibold">{movie.title}</h3>
-          </div>
+          <Link key={movie.id} to={`/pelicula/${movie.id}`}>
+            <div className="flex-none w-64 bg-gray-300 rounded-lg p-4">
+              <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} className="w-full h-auto rounded-lg shadow-md" />
+              <h3 className="mt-2 text-lg font-semibold">{movie.title}</h3>
+            </div>
           </Link>
         ))}
       </div>

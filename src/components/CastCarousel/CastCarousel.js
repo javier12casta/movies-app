@@ -5,7 +5,6 @@ import profileImg from '../../assets/profile.svg';
 const CastCarousel = ({ castData }) => {
   const [startIndex, setStartIndex] = useState(0);
   const itemsPerPage = 6;
-    console.log(castData);
   const handlePrev = () => {
     setStartIndex(prevIndex => Math.max(0, prevIndex - itemsPerPage));
   };
@@ -25,8 +24,8 @@ const CastCarousel = ({ castData }) => {
         {castData.slice(startIndex, startIndex + itemsPerPage).map((element) => (
           <div key={element.id} className={`flex-none w-64 bg-gray-300 rounded-lg p-4`}>
             <img src={element.profile_path ? `https://image.tmdb.org/t/p/w500${element.profile_path}` : `${profileImg}` } alt={element.name} className="w-full h-auto rounded-lg shadow-md" />
-            <h3 className="mt-2 text-lg font-semibold"><strong>Nombre:</strong> {element.name} days</h3>
-            <h3 className="mt-2 text-lg font-semibold"><strong>Personaje:</strong> {element.character} days</h3>
+            <h3 className="mt-2 text-lg font-semibold"><strong>Nombre:</strong> {element.name} </h3>
+            <h3 className="mt-2 text-lg font-semibold"><strong>Personaje:</strong> {element.character} </h3>
           </div>
         ))}
       </div>

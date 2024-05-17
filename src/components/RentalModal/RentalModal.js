@@ -31,7 +31,7 @@ const RentalModal = ({ movie, closeModal, confirmRent }) => {
                     <p className="text-lg">Duración: {movie.duration} min</p>
                 </div>
                 <label className="block mb-4">
-                    Duración de la renta (días):
+                    Duración del alquiler (días):
                     <input
                         type="number"
                         value={rentalDuration}
@@ -44,7 +44,7 @@ const RentalModal = ({ movie, closeModal, confirmRent }) => {
                     onClick={handleConfirm}
                     className="bg-green-500 text-white py-2 px-4 rounded mr-2"
                 >
-                    Rentar
+                    Alquilar
                 </button>
                 <button
                     onClick={closeModal}

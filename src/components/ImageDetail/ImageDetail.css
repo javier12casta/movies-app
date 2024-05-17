@@ -1,0 +1,12 @@
+/* ImageDetail.css */
+.image__container {
+    width: 192px;
+    min-width: 192px;
+    height: auto;
+    min-height: 288px;
+    border-radius: 24px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  

@@ -46,7 +46,7 @@ function CatalogPage() {
 
     const confirmRent = (rentalDuration) => {
         // Lógica para confirmar el alquiler de la película
-        console.log(`Rented movie: ${selectedMovie.title} for ${rentalDuration} days`);
+        console.log(`Rented movie: ${selectedMovie.title} for ${rentalDuration} días`);
         closeModal();
     };
 

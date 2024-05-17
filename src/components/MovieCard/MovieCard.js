@@ -14,11 +14,11 @@ function MovieCard({ movie, genres, onRent }) {
                 <Link to={`/pelicula/${movie.id}`} className="max-w-sm rounded overflow-hidden shadow-lg movie-card">
                 <img src={imgURL} alt={movie.title} className="w-full" />
                 <div className="movie-card__score w100">
-                    <p>Score: {score}</p>
+                    <p>Puntuación   : {score}</p>
                 </div>
                 <div className="px-6 py-4">
                     <div className="font-bold text-xl mb-2">{movie.title}</div>
-                    {/* <p className="text-gray-700 text-base">{movie.overview}</p> */}
+                    <p className="text-gray-700 text-base"><span>Adultos: </span>{movie.adult ? 'Si': 'No'} </p>
                 </div>
                 <div className="movie-card__genres">
                     {associateGenres(movie).map(genre => (
@@ -32,7 +32,7 @@ function MovieCard({ movie, genres, onRent }) {
                 </div>
                 </Link>
                 <button onClick={() => onRent(movie)} className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" >
-                    Rentar
+                    Alquilar
                 </button>
             </div>
     );

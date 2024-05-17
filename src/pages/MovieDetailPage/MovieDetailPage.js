@@ -48,7 +48,7 @@ function MovieDetailPage() {
   };
 
   const confirmRent = (rentalDuration) => {
-    console.log(`Movie rented for ${rentalDuration} days`);
+    console.log(`Pelicula rentada ${rentalDuration} días`);
     // Aquí puedes manejar cualquier lógica adicional después de confirmar el alquiler
     closeModal();
   };
@@ -67,7 +67,8 @@ function MovieDetailPage() {
                 <p className="text-[#555] mb-4">{movieDetails.overview}</p>
                 <p className="text-[#555] mb-4">Fecha de lanzamiento: {movieDetails.releaseDate}</p>
                 <p className="text-[#555] mb-4">Duración: {movieDetails.runtime} minutes</p>
-                <div className="mb-4">
+                <p className="text-gray-700 text-base"><span>Adultos: </span>{movieDetails.adult ? 'Si': 'No'} </p>
+                <div className="mb-4 mt-4">
                   <h2 className="text-lg font-bold text-[#333]">Generos:</h2>
                   <ul className="list-disc list-inside">
                     {movieDetails.genres.map(genre => (
@@ -79,7 +80,7 @@ function MovieDetailPage() {
                   onClick={handleRentClick}
                   className="mt-4 p-2 bg-blue-500 text-white rounded"
                 >
-                  Rentar
+                  Alquilar
                 </button>
               </div>
             </div>
